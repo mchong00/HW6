@@ -13,6 +13,8 @@
 @interface Item : NSManagedObject
 
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSData * date;
+@property (nonatomic, retain) NSNumber * price;
 
 +(instancetype)createInMoc:(NSManagedObjectContext*)moc;
 

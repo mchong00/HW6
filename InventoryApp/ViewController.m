@@ -9,14 +9,17 @@
 #import "ViewController.h"
 #import "ConfigurableCoreDataStack.h"
 #import "Item.h"
+#import "Tag.h"
+#import "Location.h"
 #import "CoreDataChangeObserver.h"
+#import "addViewController.h"
+#import "displayViewController.h"
 
 @interface ViewController ()
 
 @property (strong, nonatomic) NSManagedObjectContext *moc;
 @property (strong, nonatomic) NSArray *allItems;
 @property (strong, nonatomic) NSFetchRequest *fr;
-@property (strong, nonatomic) NSMutableArray *array;
 
 @end
 
@@ -26,9 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.theTableView2.delegate = self;
-    self.theTableView2.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.dataSource = self;
     self.inputTextField.delegate = self;
+    [self.myTableView setDoubleAction:@selector(doubleClick:)];
     
     CoreDataStackConfiguration *config = [CoreDataStackConfiguration new];
     config.storeType = NSSQLiteStoreType;
@@ -38,25 +42,22 @@
     
     config.modelName = @"InventoryModel";
     config.appIdentifier = @"com.michaelchong.example.inventory";
-    config.dataFileNameWithExtension = @"InventoryDB5.sqlite";
+    config.dataFileNameWithExtension = @"InventoryDB6.sqlite";
     config.searchPathDirectory = NSApplicationSupportDirectory;
     
     ConfigurableCoreDataStack *stack = [[ConfigurableCoreDataStack alloc ] initWithConfiguration:config];
     self.moc = stack.managedObjectContext;
     
-    [self fetchData];
-    [self.theTableView2 reloadData];
+    [self reloadTable];
     
 }
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Cell" owner:nil];
-   
     [self fetchData];
     cell.textField.stringValue = [self.array objectAtIndex:row];
  
-    
     //NSLog(@"array count is: %lu", (unsigned long)[self.array count]);
     return cell;
 }
@@ -67,21 +68,35 @@
 }
 
 - (IBAction)addButton:(id)sender {
+    
+    NSStoryboard *sb = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSViewController *vc = [sb instantiateControllerWithIdentifier:@"addViewController"];
+    [self presentViewControllerAsSheet:vc];
+}
+
+-(void)addItemWithTitle:(NSString*)title withTag:(NSString*)tag withLocation:(NSString*)location
+{
     Item *item = [Item createInMoc:self.moc];
-    item.title = self.inputTextField.stringValue;
+    item.title = title;
+    
+    Tag *tagItem = [Tag createInMoc:self.moc];
+    tagItem.tag = tag;
+
+    Location *locationItem = [Location createInMoc:self.moc];
+    locationItem.address = location;
     
     NSError *saveError = nil;
     BOOL success = [self.moc save:&saveError];
     if (!success) {
         [[NSApplication sharedApplication] presentError:saveError];
     }
-    
-    self.inputTextField.stringValue = @"";
-    [self fetchData];
-    [self.theTableView2 reloadData];
-    
 }
 
+-(void)reloadTable{
+     //NSLog(@"HELLOOOOOO");
+    [self fetchData];
+    [self.myTableView reloadData];
+}
 
 -(void)fetchData {
     self.fr = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
@@ -90,8 +105,23 @@
     
     NSError *fetchError = nil;
     self.allItems = [self.moc executeFetchRequest:self.fr error:&fetchError];
-//    NSLog(@"allItems are: %@", self.allItems);
     self.array = [self.allItems valueForKey:@"title"];
+    //    NSLog(@"allItems are: %@", self.allItems);
+}
+
+-(void)doubleClick:(id)object {
+    NSLog(@"Doubleclick");
+    // select only clicked row
+    NSIndexSet *clickedIndex = [NSIndexSet indexSetWithIndex:self.myTableView.clickedRow];
+    [self.myTableView selectRowIndexes:clickedIndex byExtendingSelection:NO];
+    
+    displayViewController *vc = [self.storyboard instantiateControllerWithIdentifier:@"displayViewController"];
+  //  vc.item = self.observer.fetchedObjects[self.tableView.clickedRow];
+    [self presentViewControllerAsSheet:vc];
+}
+
+-(IBAction)tableViewSelect:(id)sender{
+    self.row = [sender selectedRow];
 }
 
 

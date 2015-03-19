@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4C077BB21AB4EB3A00C119C6 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C077BB11AB4EB3A00C119C6 /* Item.m */; };
 		4C077BFC1AB528ED00C119C6 /* CoreDataChangeObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C077BFB1AB528ED00C119C6 /* CoreDataChangeObserver.m */; };
+		4CD2DD111ABAA47A008B030F /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2DD101ABAA47A008B030F /* Tag.m */; };
+		4CD2DD141ABAA603008B030F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2DD131ABAA603008B030F /* Location.m */; };
+		4CD2DD171ABAAC09008B030F /* displayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2DD161ABAAC09008B030F /* displayViewController.m */; };
 		4CD38AC01AA9540000D3DB9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD38ABF1AA9540000D3DB9C /* AppDelegate.m */; };
 		4CD38AC21AA9540000D3DB9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD38AC11AA9540000D3DB9C /* main.m */; };
 		4CD38AC51AA9540000D3DB9C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD38AC41AA9540000D3DB9C /* ViewController.m */; };
@@ -16,6 +19,7 @@
 		4CD38ACA1AA9540000D3DB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD38AC81AA9540000D3DB9C /* Main.storyboard */; };
 		4CD38AD61AA9540100D3DB9C /* InventoryAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD38AD51AA9540100D3DB9C /* InventoryAppTests.m */; };
 		4CD38AE41AA9585000D3DB9C /* InventoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD38AE21AA9585000D3DB9C /* InventoryModel.xcdatamodeld */; };
+		4CE8D4881ABA6B47009B7CE4 /* addViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE8D4871ABA6B47009B7CE4 /* addViewController.m */; };
 		4CF50AEA1AB4DA3A0002F1C1 /* ConfigurableCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF50AE71AB4DA3A0002F1C1 /* ConfigurableCoreDataStack.m */; };
 		4CF50AEB1AB4DA3A0002F1C1 /* CoreDataStackConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF50AE91AB4DA3A0002F1C1 /* CoreDataStackConfiguration.m */; };
 /* End PBXBuildFile section */
@@ -35,6 +39,12 @@
 		4C077BB11AB4EB3A00C119C6 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		4C077BFA1AB528ED00C119C6 /* CoreDataChangeObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataChangeObserver.h; sourceTree = "<group>"; };
 		4C077BFB1AB528ED00C119C6 /* CoreDataChangeObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataChangeObserver.m; sourceTree = "<group>"; };
+		4CD2DD0F1ABAA47A008B030F /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		4CD2DD101ABAA47A008B030F /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		4CD2DD121ABAA603008B030F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		4CD2DD131ABAA603008B030F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		4CD2DD151ABAAC09008B030F /* displayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = displayViewController.h; sourceTree = "<group>"; };
+		4CD2DD161ABAAC09008B030F /* displayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = displayViewController.m; sourceTree = "<group>"; };
 		4CD38AB91AA9540000D3DB9C /* InventoryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD38ABD1AA9540000D3DB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD38ABE1AA9540000D3DB9C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -48,6 +58,8 @@
 		4CD38AD41AA9540100D3DB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD38AD51AA9540100D3DB9C /* InventoryAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InventoryAppTests.m; sourceTree = "<group>"; };
 		4CD38AE31AA9585000D3DB9C /* InventoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InventoryModel.xcdatamodel; sourceTree = "<group>"; };
+		4CE8D4861ABA6B47009B7CE4 /* addViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addViewController.h; sourceTree = "<group>"; };
+		4CE8D4871ABA6B47009B7CE4 /* addViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addViewController.m; sourceTree = "<group>"; };
 		4CF50AE61AB4DA3A0002F1C1 /* ConfigurableCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurableCoreDataStack.h; sourceTree = SOURCE_ROOT; };
 		4CF50AE71AB4DA3A0002F1C1 /* ConfigurableCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurableCoreDataStack.m; sourceTree = SOURCE_ROOT; };
 		4CF50AE81AB4DA3A0002F1C1 /* CoreDataStackConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackConfiguration.h; sourceTree = SOURCE_ROOT; };
@@ -72,6 +84,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CD2DD181ABAAC13008B030F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4CE8D4871ABA6B47009B7CE4 /* addViewController.m */,
+				4CE8D4861ABA6B47009B7CE4 /* addViewController.h */,
+				4CD2DD151ABAAC09008B030F /* displayViewController.h */,
+				4CD2DD161ABAAC09008B030F /* displayViewController.m */,
+				4CD38AC31AA9540000D3DB9C /* ViewController.h */,
+				4CD38AC41AA9540000D3DB9C /* ViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		4CD38AB01AA9540000D3DB9C = {
 			isa = PBXGroup;
 			children = (
@@ -98,16 +123,19 @@
 				4CF50AE61AB4DA3A0002F1C1 /* ConfigurableCoreDataStack.h */,
 				4C077BB01AB4EB3A00C119C6 /* Item.h */,
 				4C077BB11AB4EB3A00C119C6 /* Item.m */,
+				4CD2DD0F1ABAA47A008B030F /* Tag.h */,
+				4CD2DD101ABAA47A008B030F /* Tag.m */,
+				4CD2DD121ABAA603008B030F /* Location.h */,
+				4CD2DD131ABAA603008B030F /* Location.m */,
 				4CF50AE71AB4DA3A0002F1C1 /* ConfigurableCoreDataStack.m */,
 				4CF50AE81AB4DA3A0002F1C1 /* CoreDataStackConfiguration.h */,
 				4CF50AE91AB4DA3A0002F1C1 /* CoreDataStackConfiguration.m */,
 				4CD38ABE1AA9540000D3DB9C /* AppDelegate.h */,
 				4CD38AE21AA9585000D3DB9C /* InventoryModel.xcdatamodeld */,
 				4CD38ABF1AA9540000D3DB9C /* AppDelegate.m */,
-				4CD38AC31AA9540000D3DB9C /* ViewController.h */,
-				4CD38AC41AA9540000D3DB9C /* ViewController.m */,
 				4CD38AC61AA9540000D3DB9C /* Images.xcassets */,
 				4CD38AC81AA9540000D3DB9C /* Main.storyboard */,
+				4CD2DD181ABAAC13008B030F /* ViewControllers */,
 				4CD38ABC1AA9540000D3DB9C /* Supporting Files */,
 			);
 			path = InventoryApp;
@@ -242,10 +270,14 @@
 				4CD38AC51AA9540000D3DB9C /* ViewController.m in Sources */,
 				4CF50AEB1AB4DA3A0002F1C1 /* CoreDataStackConfiguration.m in Sources */,
 				4CD38AC21AA9540000D3DB9C /* main.m in Sources */,
+				4CD2DD141ABAA603008B030F /* Location.m in Sources */,
+				4CD2DD111ABAA47A008B030F /* Tag.m in Sources */,
 				4C077BFC1AB528ED00C119C6 /* CoreDataChangeObserver.m in Sources */,
 				4CF50AEA1AB4DA3A0002F1C1 /* ConfigurableCoreDataStack.m in Sources */,
+				4CE8D4881ABA6B47009B7CE4 /* addViewController.m in Sources */,
 				4C077BB21AB4EB3A00C119C6 /* Item.m in Sources */,
 				4CD38AC01AA9540000D3DB9C /* AppDelegate.m in Sources */,
+				4CD2DD171ABAAC09008B030F /* displayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
