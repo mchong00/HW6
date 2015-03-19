@@ -19,8 +19,11 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *moc;
 @property (strong, nonatomic) NSArray *allItems;
+@property (strong, nonatomic) NSArray *allTags;
+@property (strong, nonatomic) NSArray *allLocations;
 @property (strong, nonatomic) NSFetchRequest *fr;
-
+@property (strong, nonatomic) NSFetchRequest *tagFr;
+@property (strong, nonatomic) NSFetchRequest *locationFr;
 @end
 
 
@@ -29,10 +32,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.myTableView.delegate = self;
-    self.myTableView.dataSource = self;
-    self.inputTextField.delegate = self;
-    [self.myTableView setDoubleAction:@selector(doubleClick:)];
+    self.whyTableView.delegate = self;
+    self.whyTableView.dataSource = self;
+    [self.whyTableView setDoubleAction:@selector(doubleClick:)];
     
     CoreDataStackConfiguration *config = [CoreDataStackConfiguration new];
     config.storeType = NSSQLiteStoreType;
@@ -42,7 +44,7 @@
     
     config.modelName = @"InventoryModel";
     config.appIdentifier = @"com.michaelchong.example.inventory";
-    config.dataFileNameWithExtension = @"InventoryDB6.sqlite";
+    config.dataFileNameWithExtension = @"InventoryDB11.sqlite";
     config.searchPathDirectory = NSApplicationSupportDirectory;
     
     ConfigurableCoreDataStack *stack = [[ConfigurableCoreDataStack alloc ] initWithConfiguration:config];
@@ -54,10 +56,10 @@
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Cell" owner:nil];
+    NSTableCellView *cell = [self.whyTableView makeViewWithIdentifier:@"Cell" owner:nil];
     [self fetchData];
     cell.textField.stringValue = [self.array objectAtIndex:row];
- 
+
     //NSLog(@"array count is: %lu", (unsigned long)[self.array count]);
     return cell;
 }
@@ -93,37 +95,36 @@
 }
 
 -(void)reloadTable{
-     //NSLog(@"HELLOOOOOO");
     [self fetchData];
-    [self.myTableView reloadData];
+    [self.whyTableView reloadData];
 }
 
 -(void)fetchData {
     self.fr = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
-//  self.fr.propertiesToFetch = @[ @"title"];
-//  self.fr.resultType = NSDictionaryResultType;
+    self.tagFr = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+    self.locationFr = [NSFetchRequest fetchRequestWithEntityName:@"Location"];
     
     NSError *fetchError = nil;
     self.allItems = [self.moc executeFetchRequest:self.fr error:&fetchError];
+    self.allTags = [self.moc executeFetchRequest:self.tagFr error:&fetchError];
+    self.allLocations = [self.moc executeFetchRequest:self.locationFr error:&fetchError];
     self.array = [self.allItems valueForKey:@"title"];
+    self.tagArray = [self.allTags valueForKey:@"tag"];
+    self.locationArray = [self.allLocations valueForKey:@"address"];
+    
     //    NSLog(@"allItems are: %@", self.allItems);
 }
 
 -(void)doubleClick:(id)object {
-    NSLog(@"Doubleclick");
-    // select only clicked row
-    NSIndexSet *clickedIndex = [NSIndexSet indexSetWithIndex:self.myTableView.clickedRow];
-    [self.myTableView selectRowIndexes:clickedIndex byExtendingSelection:NO];
-    
-    displayViewController *vc = [self.storyboard instantiateControllerWithIdentifier:@"displayViewController"];
-  //  vc.item = self.observer.fetchedObjects[self.tableView.clickedRow];
-    [self presentViewControllerAsSheet:vc];
+    NSStoryboard *sb2 = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSViewController *vc2 = [sb2 instantiateControllerWithIdentifier:@"displayViewController"];
+    [self presentViewControllerAsSheet:vc2];
 }
 
--(IBAction)tableViewSelect:(id)sender{
-    self.row = [sender selectedRow];
+-(NSInteger)returnRow {
+    NSInteger index = [self.whyTableView selectedRow];
+    return index;
 }
-
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];

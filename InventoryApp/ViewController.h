@@ -9,14 +9,16 @@
 #import <Cocoa/Cocoa.h>
 #import "ConfigurableCoreDataStack.h"
 
-@interface ViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSTextFieldDelegate>
+@interface ViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
-@property (weak) IBOutlet NSTableView *myTableView;
-@property (weak) IBOutlet NSTextField *inputTextField;
+@property (weak) IBOutlet NSTableView *whyTableView;
 @property (weak) IBOutlet NSButton *addButton;
 @property (strong, nonatomic) NSMutableArray *array;
+@property (strong, nonatomic) NSMutableArray *tagArray;
+@property (strong, nonatomic) NSMutableArray *locationArray;
 @property NSUInteger row;
 -(void)reloadTable;
+-(NSInteger)returnRow;
 -(void)addItemWithTitle:(NSString*)title withTag:(NSString*)tag withLocation:(NSString*)location;
 @end
 
